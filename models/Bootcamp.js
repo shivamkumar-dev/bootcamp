@@ -94,16 +94,9 @@ const BootcampSchema = new mongoose.Schema(
     acceptGi: {
       type: Boolean,
       default: false
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now
     }
   },
-  {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true }
-  }
+  { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
 // Create bootcamp slug from the name
