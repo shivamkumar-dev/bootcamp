@@ -1,5 +1,7 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
+const fileupload = require('express-fileupload');
 const app = express();
 const errorHandler = require('./middleware/error');
 // DB connection
@@ -9,6 +11,12 @@ connectDB();
 // routes
 const bootcamps = require('./routes/bootcamps');
 const courses = require('./routes/courses');
+
+// fileupload
+app.use(fileupload());
+
+// Set Static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // mount routes & other middlewares
 app.use(express.json());
