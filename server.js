@@ -9,11 +9,8 @@ const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 connectDB();
 
-// routes
-const bootcamps = require('./routes/bootcamps');
-const courses = require('./routes/courses');
-const auth = require('./routes/auth');
-const users = require('./routes/users');
+// router
+const router = require('./routes');
 
 // fileupload
 app.use(fileupload());
@@ -24,10 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // mount routes & other middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use('/api/v1/bootcamps', bootcamps);
-app.use('/api/v1/courses', courses);
-app.use('/api/v1/auth', auth);
-app.use('/api/v1/users', users);
+app.use('/', router);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

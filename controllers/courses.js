@@ -49,7 +49,7 @@ exports.addCourse = asyncHandler(async (req, res, next) => {
 
   if (!bootcamp)
     return next(
-      new ErrorResponse(`No BOotcamp  with id of ${req.params.bootcampId}`, 404)
+      new ErrorResponse(`No Bootcamp  with id of ${req.params.bootcampId}`, 404)
     );
 
   if (bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin')
